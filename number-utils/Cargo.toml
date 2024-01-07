@@ -6,6 +6,7 @@ license.workspace = true
 repository.workspace = true
 edition.workspace = true
 categories.workspace = true
+description = "A calculation crate."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
