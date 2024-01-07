@@ -1,0 +1,18 @@
+[package]
+name = "prime-number-utils"
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+edition.workspace = true
+categories.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-bigint = { workspace = true, optional = true }
+num-iter = { workspace = true, optional = true }
+
+[features]
+default = ["num-bigint"]
+num-bigint = ["dep:num-bigint", "dep:num-iter"]

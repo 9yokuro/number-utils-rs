@@ -1,0 +1,18 @@
+[workspace]
+
+members = [
+    "number-utils",
+    "prime-number-utils",
+]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["p1486 xzstd099@protonmail.com"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/p1486/number-utils-rs.git"
+edition = "2021"
+categories = ["algorithm"]
+
+[workspace.dependencies]
+num-bigint = "0.4.4"
+num-iter = "0.1.43"
