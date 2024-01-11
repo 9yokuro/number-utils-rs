@@ -63,26 +63,6 @@ macro_rules! impl_number_utils_for {
                 self / self.gcd(m) * m
             }
 
-            fn isqrt(&self) -> Self {
-                if self < &2 {
-                    return *self;
-                }
-                let mut shift = 2;
-                while self >> shift != 0 {
-                    shift += 2;
-                }
-                let mut result = 0;
-                while shift >= 0 {
-                    result <<= 1;
-                    let large_cand = result + 1;
-                    if large_cand * large_cand <= self >> shift {
-                        result = large_cand;
-                    }
-                    shift -= 2;
-                }
-                result
-            }
-
             fn checked_factorial(&self) -> Option<Self> {
                 if self <= &1 {
                     Some(1)

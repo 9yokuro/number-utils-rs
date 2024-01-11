@@ -53,14 +53,6 @@ mod tests {
     }
 
     #[test]
-    fn test_isqrt() {
-        assert_eq!(122_u32.isqrt(), 11);
-        assert_eq!(122_u64.isqrt(), 11);
-        assert_eq!(122_u128.isqrt(), 11);
-        assert_eq!(122_usize.isqrt(), 11);
-    }
-
-    #[test]
     fn test_pascals_triangle() {
         assert_eq!(
             pascals_triangle(6),

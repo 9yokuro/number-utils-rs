@@ -68,19 +68,6 @@ pub trait NumberUtils {
     /// # }
     fn lcm(&self, m: Self) -> Self;
 
-    /// Calculates integer square root.
-    ///
-    /// # Examples
-    /// Basic usage:
-    /// ```
-    /// # use number_utils::NumberUtils;
-    /// # fn main() {
-    /// let n: u32 = 122;
-    /// assert_eq!(n.isqrt(), 11);
-    /// # }
-    /// ```
-    fn isqrt(&self) -> Self;
-
     /// Calculates factorial, returning None if overflow occured.
     ///
     /// # Examples
