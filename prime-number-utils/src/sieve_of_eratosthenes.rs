@@ -1,5 +1,4 @@
 use crate::{impl_gen_range, GenPrime};
-use std::ops::{Bound::*, RangeBounds};
 
 #[derive(Default, Debug, Clone, Copy, Eq, PartialEq, Hash)]
 /// Implementation of the Sieve of Eratosthenes.
@@ -14,7 +13,6 @@ use std::ops::{Bound::*, RangeBounds};
 /// ```
 pub struct SieveOfEratosthenes {
     max: usize,
-    min: usize,
 }
 
 impl SieveOfEratosthenes {

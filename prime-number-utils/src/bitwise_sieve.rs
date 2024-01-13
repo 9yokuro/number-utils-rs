@@ -1,5 +1,4 @@
 use crate::{impl_gen_range, GenPrime};
-use std::ops::{Bound::*, RangeBounds};
 
 #[derive(Default, Debug, Clone, Copy, Eq, PartialEq, Hash)]
 /// Generates prime numbers using bitwise.
@@ -14,7 +13,6 @@ use std::ops::{Bound::*, RangeBounds};
 /// ```
 pub struct BitwiseSieve {
     max: usize,
-    min: usize,
 }
 
 impl BitwiseSieve {
@@ -24,9 +22,13 @@ impl BitwiseSieve {
     }
 }
 
+#[inline]
+fn not_prime(sieve: &[usize], n: usize) -> usize {
+    sieve[n / 64] & (1 << ((n >> 1) & 31))
+}
+
 impl GenPrime for BitwiseSieve {
     fn gen(&mut self) -> Vec<usize> {
-        let not_prime = |sieve: &Vec<usize>, n: usize| sieve[n / 64] & (1 << ((n >> 1) & 31));
         if self.max < 2 {
             return vec![];
         }

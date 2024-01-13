@@ -1,41 +1,34 @@
 use crate::{impl_gen_range, BitwiseSieve, GenPrime};
-use std::ops::{Bound::*, RangeBounds};
 
 /// Implementation of the Segmented sieve.
 ///
 /// # Examples
 /// ```
-/// # use prime_number_utils::{GenPrime, SegmentedSieve, BitwiseSieve};
+/// # use prime_number_utils::{GenPrime, SegmentedSieve};
 /// # fn main() {
-/// let mut segmented_sieve = SegmentedSieve::new(BitwiseSieve::new());
+/// let mut segmented_sieve = SegmentedSieve::new();
 /// assert_eq!(segmented_sieve.gen_range(0..10), vec![2, 3, 5, 7]);
 /// # }
 /// ```
 #[derive(Default, Debug, Clone, Eq, PartialEq, Hash)]
-pub struct SegmentedSieve<G: GenPrime = BitwiseSieve> {
+pub struct SegmentedSieve {
     max: usize,
-    min: usize,
-    gen_prime: G,
 }
 
-impl<G: GenPrime> SegmentedSieve<G> {
+impl SegmentedSieve {
     /// Creates a new sieve.
-    pub fn new(gen_prime: G) -> Self {
-        Self {
-            max: 0,
-            min: 0,
-            gen_prime,
-        }
+    pub fn new() -> Self {
+        Self::default()
     }
 }
 
-impl<G: GenPrime> GenPrime for SegmentedSieve<G> {
+impl GenPrime for SegmentedSieve {
     fn gen(&mut self) -> Vec<usize> {
         if self.max < 2 {
             return vec![];
         }
         let n = (self.max as f64).sqrt() as usize;
-        let mut primes = self.gen_prime.gen_range(0..n);
+        let mut primes = BitwiseSieve::new().gen_range(0..n);
         let mut low = n;
         let mut high = 2 * n;
         let mut result = vec![];

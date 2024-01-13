@@ -1,5 +1,4 @@
 use crate::{impl_gen_range, GenPrime};
-use std::ops::{Bound::*, RangeBounds};
 
 #[derive(Default, Debug, Clone, Copy, Eq, PartialEq, Hash)]
 /// Implementation of the Sieve of Atkin.
@@ -14,7 +13,6 @@ use std::ops::{Bound::*, RangeBounds};
 /// ```
 pub struct SieveOfAtkin {
     max: usize,
-    min: usize,
 }
 
 impl SieveOfAtkin {

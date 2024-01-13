@@ -1,5 +1,4 @@
 use crate::{impl_gen_range, GenPrime};
-use std::ops::{Bound::*, RangeBounds};
 
 #[derive(Default, Debug, Clone, Eq, PartialEq, Hash)]
 /// Implementation of the Linear Sieve.
@@ -16,7 +15,6 @@ use std::ops::{Bound::*, RangeBounds};
 /// ```
 pub struct LinearSieve {
     max: usize,
-    min: usize,
     smallest_prime_factors: Vec<usize>,
 }
 
@@ -56,7 +54,7 @@ impl LinearSieve {
             return prime_factors;
         }
         let mut linear_sieve = LinearSieve::new();
-        linear_sieve.gen_range(0..=n);
+        linear_sieve.gen_range(0..n + 1);
         let smallest_prime_factors = linear_sieve.smallest_prime_factors();
         while n != 1 {
             let smallest_prime_factors_n = smallest_prime_factors[n];
@@ -72,13 +70,13 @@ impl GenPrime for LinearSieve {
         if self.max < 2 {
             return vec![];
         }
-        let mut primes = vec![2];
         if self.max == 2 {
-            return primes;
+            return vec![2];
         }
         self.smallest_prime_factors = vec![2; self.max + 1];
         self.smallest_prime_factors[0] = 0;
         self.smallest_prime_factors[1] = 0;
+        let mut primes = vec![2];
         for i in (3..=self.max).step_by(2) {
             if self.smallest_prime_factors[i] == 2 {
                 self.smallest_prime_factors[i] = i;

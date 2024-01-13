@@ -35,9 +35,7 @@ mod tests {
     #[test]
     fn test_segmented_sieve() {
         assert_eq!(
-            SegmentedSieve::new(BitwiseSieve::new())
-                .gen_range(0..1_000_000_000)
-                .len(),
+            SegmentedSieve::new().gen_range(0..1_000_000_000).len(),
             50_847_534
         );
     }
