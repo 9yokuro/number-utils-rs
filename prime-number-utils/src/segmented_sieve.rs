@@ -28,7 +28,7 @@ impl GenPrime for SegmentedSieve {
             return vec![];
         }
         let n = (self.max as f64).sqrt() as usize;
-        let mut primes = BitwiseSieve::new().gen_range(0..n);
+        let mut primes = BitwiseSieve::new().gen_range(0..n + 1);
         let mut low = n;
         let mut high = 2 * n;
         let mut result = vec![];

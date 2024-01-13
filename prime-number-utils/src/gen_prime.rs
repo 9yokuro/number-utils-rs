@@ -22,7 +22,7 @@ macro_rules! impl_gen_range {
             let min = range.start;
             self.max = range.end;
             let mut primes = self.gen();
-            primes.retain(|&x| min <= x);
+            primes.retain(|&x| min <= x && x < self.max);
             primes
         }
     };
